@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from .models import Pokemon, Ability
 from django.views import View
 import requests
-from django.db.models import Q
 
 
 class HomePageView(View):
@@ -83,3 +82,5 @@ class PokemoniewApi(View):
             poki.pok_abilitys.add(pok_num)
         print(f'lista {abilitys}')
         return redirect('/api/')
+
+
