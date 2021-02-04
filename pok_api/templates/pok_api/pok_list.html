@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block title %} {{ autor.name }}- Library4U {% endblock %}
+{% block content %}
+
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName('li');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
+<style>
+    li {
+        float: left;
+        display: block;
+        margin: 10px 10px 10px 10px;
+        padding: 2px;
+        /* border: 1px solid; */
+    }
+
+    li a {
+        margin: 10px;
+    }
+
+    #myInput {
+        background-image: url('https://www.w3schools.com/css/searchicon.png');
+        background-position: 10px 12px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+
+    .moj {
+        height: 7000px;
+    }
+</style>
+
+<br>
+    <br>
+    <br>
+    <br>
+<div class="main">
+{% if query %}
+
+    <a href="/pok_api/">Back to search</a><br>
+    <br>
+    <strong>Name : </strong> {{ pokemon_name|title }}<br>
+    <img src="{{ pokemon_image }}"><br>
+    <strong>Abilities:</strong>
+    {% for ability in a %}
+        {{ ability }},
+    {% endfor %}
+    <br>
+    <strong>Height : </strong>{{ height }}<br>
+    <strong>Weight : </strong>{{ weight }}<br>
+    <br>
+    {% if pokemon_in_data_base %}
+        <p>Pokemon already in DB</p>
+
+    {% else %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="id">
+            <input class="btn btn-success" type="submit" value="Import to DB">
+            </td>
+        </form>
+
+    {% endif %}
+
+{% else %}
+    <div class="moj">
+    <form class="form-inline my-2 my-lg-0" action="" method="get">
+        <input class="form-control mr-sm-2" type="search" id="myInput" onkeyup="myFunction()"
+               placeholder="Search for  Pokemon" aria-label="Search" name="q">
+    </form>
+
+    <ol id='myUL'>
+        {% for pokemon in pok_req %}
+
+            <li><a href="?q={{ pokemon.name }}">{{ pokemon.name|title }} </a>
+            </li>
+
+        {% endfor %}
+    </ol>
+    </div>
+{% endif %}
+{#<!-- <div class="row row-cols-1 row-cols-md-5">#}
+{#        {{books_list.title}}#}
+{#        {{books_list}}#}
+{#        <ol>#}
+{#            {% if books %}#}
+{#            <p>odnaleziono {{books|length }} wyników</p>#}
+{#            {% endif %}#}
+{#            {% for book in books %}#}
+{#            <img src="{{book.image_link}}">#}
+{#            <li><a href="?q={{book.name}}">{{book.name}} </a>{{book.name}}#}
+{#                <!-- {{book.authors}} - {{book.isbn_num}} -->#}
+{#    <!-- </li>#}
+{#    {% empty %}#}
+{#    <p>odnaleziono 0 wyników</p>#}
+{#    {% endfor %}#}
+{#    </ol> -->#}
+</div>
+{% endblock content %}
