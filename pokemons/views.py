@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
@@ -10,10 +10,11 @@ class PokemonListView(ListView):
     template_name = 'pokemons/list.html'
     model = Pokemon
 
-class PokemonCreateView(LoginRequiredMixin, CreateView):
+class PokemonCreateView(PermissionRequiredMixin, CreateView):
     form_class = PokemonForm
     template_name = 'pokemons/pokemon_form.html'
     success_url = '/pokemons'
+    permission_required = 'pok_api.add_pokemon'
 
 
 class PokemonDetailsView(View):
@@ -21,20 +22,23 @@ class PokemonDetailsView(View):
         pokemon = Pokemon.objects.get(id=id)
         return render(request, 'pokemons/pokemon_details.html', {'pokemon': pokemon})
 
-class PokemonUpdate(LoginRequiredMixin, UpdateView):
+class PokemonUpdate(PermissionRequiredMixin, UpdateView):
     model = Pokemon
     form_class = PokemonForm
     template_name = 'pokemons/pokemon_form.html'
     success_url = '/pokemons'
+    permission_required = 'pok_api.change_pokemon'
 
-class PokemonDelete(LoginRequiredMixin, DeleteView):
+class PokemonDelete(PermissionRequiredMixin, DeleteView):
     model = Pokemon
     template_name = 'pokemons/pokemon_delete.html'
     success_url = '/pokemons/'
+    permission_required = 'pok_api.delete_pokemon'
 
 
-class PokemonAbilityCreateView(LoginRequiredMixin, CreateView):
+class PokemonAbilityCreateView(PermissionRequiredMixin, CreateView):
     form_class = AbilityForm
     template_name = 'pokemons/pokemon_form.html'
     success_url = '/pokemons'
+    permission_required = 'pok_api.add_ability'
 
