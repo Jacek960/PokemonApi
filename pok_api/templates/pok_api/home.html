@@ -2,33 +2,81 @@
 {% block title %} Home page - Pokemons Api {% endblock %}
 {% block content %}
 
-<h1>home page</h1>
+    <h1 style="text-align: center">Select Application</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm" style="background-color:#f5f5f0;">
+                <div class="card-body"><img class="card-img-top" width="100%" height="225"
+                                            src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"/>
 
-{#    <div class="row">#}
-{#        <div class="col-sm-8">#}
-{#            <h1>Welcome to Library4U</h1>#}
-{#            <p>The library has the following record counts:</p>#}
-{#            <p></p>#}
-{#            <p></p>#}
-{#            <ul>#}
-{##}
-{#                <li><strong>Books:</strong> {{ num_books }}</li>#}
-{#                <li><strong>Copies:</strong> {{ num_instances }}</li>#}
-{#                <li><strong>Copies available:</strong> {{ num_instances_available }}</li>#}
-{#                <li><strong>Authors:</strong> {{ num_autors }}</li>#}
-{#            </ul>#}
-{##}
-{#        </div>#}
-{#        <div class="col-sm-4">#}
-{#            <h4>Latest book:</h4>#}
-{#            <h5><a href="{% url 'book_details' last_book.id %} ">{{ last_book }}</a></h5>#}
-{#            <a href="{% url 'book_details' last_book.id %} ">#}
-{#                <img src="{{ last_book.cover.url }}" class="card-img-top" alt="..."#}
-{##}
-{#                     style="width: 157px;height:250px"></a>#}
-{#            <br>#}
-{##}
-{#        </div>#}
-{#    </div>#}
+                    </br>
+                    <br>
+                    <div class=" text-center">
+                        <p class="card-text"><strong>Pokemon Api</strong></p>
+                    </div>
+                    <br>
+                    <p class="card-text" style="text-align: justify">Pokemon Api from pokeapi.co</p>
+                    <div class="d-flex justify-content-between align-items-center float-right">
+                        <div class="btn-group">
+                            <a href="{% url 'pokemon_api' %}">
+                                <button type="button" class="btn btn-danger">More
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm" style="background-color:#f5f5f0;">
+                <div class="card-body"><img class="card-img-top" width="100%" height="225"
+                                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"/>
+
+                    </br>
+                    <br>
+                    <div class=" text-center">
+                        <p class="card-text"><strong>Pokemons in DB</strong></p>
+                    </div>
+                    <br>
+                    <p class="card-text" style="text-align: justify">Pokemons imported from Api to DB</p>
+                    <div class="d-flex justify-content-between align-items-center float-right">
+                        <div class="btn-group">
+                            <a href="{% url 'pokemon_list' %}">
+                                <button type="button" class="btn btn-danger">More
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="col-md-4">
+            <div class="card mb-4 shadow-sm" style="background-color:#f5f5f0;">
+                <div class="card-body"><img class="card-img-top" width="100%" height="225"
+                                            src="https://static.wikia.nocookie.net/pokemon-fano/images/6/6f/Poke_Ball.png/revision/latest/scale-to-width-down/180?cb=20140520015336"/>
+
+                    </br>
+                    <br>
+                    <div class=" text-center">
+                        <p class="card-text"><strong>Pokemons RestApi</strong></p>
+                    </div>
+                    <br>
+                    <p class="card-text" style="text-align: justify">Pokemons RestApi</p>
+                    <div class="d-flex justify-content-between align-items-center float-right">
+                        <div class="btn-group">
+                            <a href="{% url 'pokemon_restApi' %}">
+                                <button type="button" class="btn btn-danger">More
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 
 {% endblock content %}
