@@ -60,21 +60,17 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'pokemon_add' %}">Add Pokemon </a>
-                            <a class="dropdown-item" href="">Add Ability </a>
+                            <a class="dropdown-item" href="{%  url 'pokemon_add_ability' %}">Add Ability </a>
                         </div>
                     {% endif %}
                 </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="">Log out</a></li>
+                        <a class="nav-link " href="{% url 'logout' %}">Log out</a></li>
                 {% else %}
-                    <li><a class="nav-link active" href="">Log in</a></li>
+                    <li><a class="nav-link active" href="{%  url 'login' %}">Log in</a></li>
                 {% endif %}
         </div>
-        <form class="form-inline my-2 my-lg-0" action="" method="get">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </nav>
 </header>
 <main role="main">

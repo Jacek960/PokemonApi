@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from pok_api.models import Pokemon
-from pokemons.forms import PokemonForm
+from pokemons.forms import PokemonForm, AbilityForm
 
 
 class PokemonListView(ListView):
@@ -31,4 +31,10 @@ class PokemonDelete(LoginRequiredMixin, DeleteView):
     model = Pokemon
     template_name = 'pokemons/pokemon_delete.html'
     success_url = '/pokemons/'
+
+
+class PokemonAbilityCreateView(LoginRequiredMixin, CreateView):
+    form_class = AbilityForm
+    template_name = 'pokemons/pokemon_form.html'
+    success_url = '/pokemons'
 
