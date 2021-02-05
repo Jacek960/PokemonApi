@@ -4,7 +4,7 @@ from .serializers import PokemonSerializer, AbilitySerializer
 from rest_framework import generics
 
 
-
+# Django REST framework Views
 
 class ListPokemon(generics.ListAPIView):
     queryset = Pokemon.objects.all()

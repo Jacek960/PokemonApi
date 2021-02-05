@@ -4,32 +4,28 @@ from .models import Pokemon, Ability
 from django.views import View
 import requests
 
+# Home page
 
 class HomePageView(View):
     def get(self,request):
         return render(request,'pok_api/home.html')
 
+# View to get data from https://pokeapi.co/
 
 class PokemoniewApi(View):
     def get(self, request):
-        books = None
         query = None
-        books_list = None
         pokemon_in_data_base = None
         a = []
         pokemon_name = None
         pokemon_image = None
         height = None
         weight = None
-        # pok_abilitys = None
-        # # books_list = None
+
         if 'q' in request.GET:
             query = request.GET.get('q')
             pok_req = requests.get(
                 f"https://pokeapi.co/api/v2/pokemon/{query}").json()
-
-            # items_amount = len(pok_req)
-            # books_list = []
 
             pokemon_name = pok_req['forms'][0]['name']
             pokemon_image = pok_req['sprites']['other']['official-artwork']['front_default']
@@ -58,6 +54,8 @@ class PokemoniewApi(View):
 
                                                      })
 
+# Import data from https://pokeapi.co/ to DB
+
     def post(self, request):
         query = request.GET.get('q')
         pok_req = requests.get(
@@ -82,5 +80,3 @@ class PokemoniewApi(View):
             poki.pok_abilitys.add(pok_num)
         print(f'lista {abilitys}')
         return redirect('/api/')
-
-
