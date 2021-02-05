@@ -1,14 +1,13 @@
-
 {% extends 'base.html' %}
 {% block title %}Pokemons {% endblock %}
 {% block content %}
     <div class="container">
         <h2>Pokemons: </h2>
 
-            {% for pokemon in object_list %}
-                {% include "pokemons/pok_card.html" %}
-            {% endfor %}
+        {% for pokemon in object_list %}
+            {% include "pokemons/pok_card.html" %}
+        {% endfor %}
 
-{#        {% include "books/pagination.html" %}#}
+        {#        {% include "books/pagination.html" %}#}
     </div>
 {% endblock %}
