@@ -1,4 +1,4 @@
-# Api and REST framwork
+# Api and REST Api
 > Website - Pokemons Api    
 > [Live Version](https://gentle-coast-02039.herokuapp.com/)
 
